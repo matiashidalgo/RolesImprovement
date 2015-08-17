@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <products>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view products and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit products</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete and massive delete products</title>
+                                    </delete>
+                                </children>
+                            </products>
+                            <categories>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view categories and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit categories</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete and massive delete categories</title>
+                                    </delete>
+                                </children>
+                            </categories>
+                        </children>
+                    </catalog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
