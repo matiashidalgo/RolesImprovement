@@ -50,12 +50,41 @@ class Mhidalgo_RolesImprovements_Helper_Validator
         return $this->getAdminSession()->isAllowed('catalog/urlrewrite/'.$action);
     }
 
+    public function canCatalogSearch($action) {
+        return $this->getAdminSession()->isAllowed('catalog/search/'.$action);
+    }
+
+    public function canCatalogReviewPending($action) {
+        return $this->getAdminSession()->isAllowed('catalog/reviews_ratings/review/pending/'.$action);
+    }
+
+    public function canCatalogReviewAll($action) {
+        return $this->getAdminSession()->isAllowed('catalog/reviews_ratings/review/all/'.$action);
+    }
+
+    public function canCatalogRating($action) {
+        return $this->getAdminSession()->isAllowed('catalog/reviews_ratings/rating/'.$action);
+    }
+
+    public function canCatalogSitemap($action) {
+        return $this->getAdminSession()->isAllowed('catalog/sitemap/'.$action);
+    }
+
     /**
      * @param Mage_Adminhtml_Block_Catalog_Product $block
      */
     public function validateAdminhtmlCatalogProduct($block) {
         if (!$this->canCatalogProduct('edit')) {
             $block->removeButton('add_new');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Catalog_Product_Grid $block
+     */
+    public function validateAdminhtmlCatalogProductGrid($block) {
+        if (!$this->canCatalogProduct('edit')) {
+            $block->removeColumn('action');
         }
     }
 
@@ -217,28 +246,167 @@ class Mhidalgo_RolesImprovements_Helper_Validator
         if (!$this->canCatalogUrlRewrite('edit')) {
             $block->removeButton('reset');
             $block->removeButton('save');
+            $block->unsetChild('product_link');
+            $block->unsetChild('category_link');
         }
 
         if (!$this->canCatalogUrlRewrite('delete')) {
             $block->removeButton('delete');
         }
+    }
 
-        if ($this->getProductId()) {
-            $this->setChild('product_link', $this->getLayout()->createBlock('adminhtml/urlrewrite_link')
-                    ->setData(array(
-                        'item_url' => Mage::helper('adminhtml')->getUrl('*/*/*') . 'product',
-                        'item'     => Mage::registry('current_product'),
-                        'label'    => Mage::helper('adminhtml')->__('Product:')
-                    ))
-            );
+    /**
+     * @param Mage_Adminhtml_Block_Catalog_Search $block
+     */
+    public function validateAdminhtmlCatalogSearch($block) {
+        if (!$this->canCatalogSearch('edit')) {
+            $block->removeButton('add');
         }
-        if ($this->getCategoryId()) {
-            $itemUrl = Mage::helper('adminhtml')->getUrl('*/*/*') . 'category';
-            $this->getChild('category_link')
-                ->setData(array(
-                    'item_url' => ''
-                ));
+    }
 
+    /**
+     * @param Mage_Adminhtml_Block_Catalog_Search_Grid $block
+     */
+    public function validateAdminhtmlCatalogSearchGrid($block) {
+        if (!$this->canCatalogSearch('edit')) {
+            $block->removeColumn('action');
+        }
+
+        if (!$this->canCatalogSearch('delete')) {
+            $block->getMassactionBlock()->removeItem('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Catalog_Search_Edit $block
+     */
+    public function validateAdminhtmlCatalogSearchEdit($block) {
+        if (!$this->canCatalogSearch('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('reset');
+        }
+
+        if (!$this->canCatalogSearch('delete')) {
+            $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Review_Main $block
+     */
+    public function validateAdminhtmlReviewMain($block) {
+        if( Mage::registry('usePendingFilter') === true ) {
+            if (!$this->canCatalogReviewPending('edit')) {
+                $block->removeButton('add');
+            }
+        } else {
+            if (!$this->canCatalogReviewAll('edit')) {
+                $block->removeButton('add');
+            }
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Review_Edit $block
+     */
+    public function validateAdminhtmlReviewEdit($block) {
+        if( Mage::registry('usePendingFilter') === true ) {
+            if (!$this->canCatalogReviewPending('edit')) {
+                $block->removeButton('save');
+                $block->removeButton('reset');
+            }
+
+            if (!$this->canCatalogReviewPending('delete')) {
+                $block->removeButton('delete');
+            }
+        } else {
+            if (!$this->canCatalogReviewAll('edit')) {
+                $block->removeButton('save');
+                $block->removeButton('reset');
+            }
+
+            if (!$this->canCatalogReviewAll('delete')) {
+                $block->removeButton('delete');
+            }
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Review_Grid $block
+     */
+    public function validateAdminhtmlReviewGrid($block) {
+        if (!$this->canCatalogReviewPending('edit')) {
+            $block->removeColumn('action');
+            $block->getMassactionBlock()->removeItem('update_status');
+        }
+
+        if (!$this->canCatalogReviewPending('delete')) {
+            $block->getMassactionBlock()->removeItem('delete');
+        }
+
+        if (!$this->canCatalogReviewAll('edit')) {
+            $block->removeColumn('action');
+            $block->getMassactionBlock()->removeItem('update_status');
+        }
+
+        if (!$this->canCatalogReviewAll('delete')) {
+            $block->getMassactionBlock()->removeItem('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Rating_Rating $block
+     */
+    public function validateAdminhtmlRatingRating($block) {
+        if (!$this->canCatalogRating('edit')) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Rating_Edit $block
+     */
+    public function validateAdminhtmlRatingEdit($block) {
+        if (!$this->canCatalogRating('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('reset');
+        }
+
+        if (!$this->canCatalogRating('delete')) {
+            $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Sitemap $block
+     */
+    public function validateAdminhtmlSitemap($block) {
+        if (!$this->canCatalogSitemap('edit')) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Sitemap_Edit $block
+     */
+    public function validateAdminhtmlSitemapEdit($block) {
+        if (!$this->canCatalogSitemap('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('generate');
+            $block->removeButton('reset');
+        }
+
+        if (!$this->canCatalogRating('delete')) {
+            $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Sitemap_Grid $block
+     */
+    public function validateAdminhtmlSitemapGrid($block) {
+        if (!$this->canCatalogSitemap('edit')) {
+            $block->removeColumn('action');
         }
     }
 }

@@ -51,9 +51,11 @@ app/etc/local.xml.template
 app/etc/local.xml
 app/.htaccess
 app/locale/
+app/bootstrap.php
 app/Mage.php
 /cron.php
 cron.sh
+dev/
 downloader/
 errors/
 favicon.ico
@@ -92,6 +94,7 @@ lib/Zend/
 lib/Cm/
 lib/Credis/
 lib/Magento/
+lib/Net/
 LICENSE_AFL.txt
 LICENSE.html
 LICENSE.txt

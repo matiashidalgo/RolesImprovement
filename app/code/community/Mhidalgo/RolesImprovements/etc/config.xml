@@ -10,11 +10,6 @@
             <mhidalgo_rolesimprovements>
                 <class>Mhidalgo_RolesImprovements_Block</class>
             </mhidalgo_rolesimprovements>
-            <adminhtml>
-                <rewrite>
-                    <catalog_product_grid>Mhidalgo_RolesImprovements_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid>
-                </rewrite>
-            </adminhtml>
         </blocks>
         <helpers>
             <mhidalgo_rolesimprovements>
@@ -45,6 +40,14 @@
                     </mhidalgo_rolesimprovements>
                 </observers>
             </core_block_abstract_prepare_layout_after>
+            <adminhtml_block_html_before>
+                <observers>
+                    <mhidalgo_rolesimprovements>
+                        <class>mhidalgo_rolesimprovements/observer</class>
+                        <method>adminhtmlBlockHtmlBefore</method>
+                    </mhidalgo_rolesimprovements>
+                </observers>
+            </adminhtml_block_html_before>
         </events>
     </adminhtml>
 </config>

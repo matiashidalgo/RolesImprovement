@@ -62,6 +62,50 @@ class Mhidalgo_RolesImprovements_Model_Observer
             case 'Mage_Adminhtml_Block_Urlrewrite_Edit':
                 $validator->validateAdminhtmlUrlrewriteEdit($block);
                 break;
+            case 'Mage_Adminhtml_Block_Catalog_Search':
+                $validator->validateAdminhtmlCatalogSearch($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Search_Edit':
+                $validator->validateAdminhtmlCatalogSearchEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Review_Main':
+                $validator->validateAdminhtmlReviewMain($block);
+                break;
+            case 'Mage_Adminhtml_Block_Review_Edit':
+                $validator->validateAdminhtmlReviewEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Rating_Rating':
+                $validator->validateAdminhtmlRatingRating($block);
+                break;
+            case 'Mage_Adminhtml_Block_Rating_Edit':
+                $validator->validateAdminhtmlRatingEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Sitemap':
+                $validator->validateAdminhtmlSitemap($block);
+                break;
+            case 'Mage_Adminhtml_Block_Sitemap_Edit':
+                $validator->validateAdminhtmlSitemapEdit($block);
+                break;
+        }
+    }
+
+    public function adminhtmlBlockHtmlBefore($observer)
+    {
+        $validator = $this->_getValidatorHelper();
+        $block = $observer->getBlock();
+        switch (get_class($block)) {
+            case 'Mage_Adminhtml_Block_Catalog_Product_Grid':
+                $validator->validateAdminhtmlCatalogProductGrid($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Search_Grid':
+                $validator->validateAdminhtmlCatalogSearchGrid($block);
+                break;
+            case 'Mage_Adminhtml_Block_Review_Grid':
+                $validator->validateAdminhtmlReviewGrid($block);
+                break;
+            case 'Mage_Adminhtml_Block_Sitemap_Grid':
+                $validator->validateAdminhtmlSitemapGrid($block);
+                break;
         }
     }
 

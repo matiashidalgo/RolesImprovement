@@ -75,6 +75,79 @@
                                     </delete>
                                 </children>
                             </urlrewrite>
+                            <search>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view search terms and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit search terms</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete and massive delete search terms</title>
+                                    </delete>
+                                </children>
+                            </search>
+                            <reviews_ratings>
+                                <children>
+                                    <reviews>
+                                        <children>
+                                            <pending>
+                                                <children>
+                                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                                        <title>Allow view pending reviews and grid</title>
+                                                    </view>
+                                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                        <title>Allow edit pending reviews</title>
+                                                    </edit>
+                                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                        <title>Allow delete and massive delete pending reviews</title>
+                                                    </delete>
+                                                </children>
+                                            </pending>
+                                            <all>
+                                                <children>
+                                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                                        <title>Allow view all reviews and grid</title>
+                                                    </view>
+                                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                        <title>Allow edit all reviews</title>
+                                                    </edit>
+                                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                        <title>Allow delete and massive delete all reviews</title>
+                                                    </delete>
+                                                </children>
+                                            </all>
+                                        </children>
+                                    </reviews>
+                                    <ratings>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow view ratings and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow create and edit ratings</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow delete ratings</title>
+                                            </delete>
+                                        </children>
+                                    </ratings>
+                                </children>
+                            </reviews_ratings>
+                            <sitemap>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view Google sitemap and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create, edit and generate Google sitemap</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete Google sitemap</title>
+                                    </delete>
+                                </children>
+                            </sitemap>
                         </children>
                     </catalog>
                 </children>
