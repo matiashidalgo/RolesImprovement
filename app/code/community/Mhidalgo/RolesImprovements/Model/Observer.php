@@ -19,11 +19,48 @@ class Mhidalgo_RolesImprovements_Model_Observer
             case 'Mage_Adminhtml_Block_Catalog_Product':
                 $validator->validateAdminhtmlCatalogProduct($block);
                 break;
+            case 'Mage_Adminhtml_Block_Catalog_Product_Edit':
+                $validator->validateAdminhtmlCatalogProductEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Product_Edit_Tab_Price_Tier':
+            case 'Mage_Adminhtml_Block_Catalog_Product_Edit_Tab_Price_Group':
+                $validator->validateAdminhtmlCatalogProductEditTabPrice($block);
+                break;
             case 'Mage_Adminhtml_Block_Catalog_Product_Edit_Tab_Options':
                 $validator->validateAdminhtmlCatalogProductEditTabOptions($block);
                 break;
             case 'Mage_Adminhtml_Block_Catalog_Product_Edit_Tab_Options_Option':
                 $validator->validateAdminhtmlCatalogProductEditTabOptionsOption($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Product_Attribute':
+                $validator->validateAdminhtmlCatalogProductAttribute($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Product_Attribute_Edit':
+                $validator->validateAdminhtmlCatalogProductAttributeEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Product_Attribute_Edit_Tab_Options':
+                $validator->validateAdminhtmlCatalogProductAttributeEditTabOptions($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Product_Attribute_Set_Toolbar_Main':
+                $validator->validateAdminhtmlCatalogProductAttributeSetToolbarMain($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Product_Attribute_Set_Main':
+                $validator->validateAdminhtmlCatalogProductAttributeSetMain($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Category_Edit_Form':
+                $validator->validateAdminhtmlCatalogCategoryEditForm($block);
+                break;
+            case 'Mage_Adminhtml_Block_Catalog_Category_Tree':
+                $validator->validateAdminhtmlCatalogCategoryTree($block);
+                break;
+            case 'Mage_Adminhtml_Block_Media_Uploader':
+                $validator->validateAdminhtmlMediaUploader($block);
+                break;
+            case 'Mage_Adminhtml_Block_Urlrewrite':
+                $validator->validateAdminhtmlUrlrewrite($block);
+                break;
+            case 'Mage_Adminhtml_Block_Urlrewrite_Edit':
+                $validator->validateAdminhtmlUrlrewriteEdit($block);
                 break;
         }
     }

@@ -28,10 +28,53 @@
                                         <title>Allow create and edit categories</title>
                                     </edit>
                                     <delete translate="title" module="mhidalgo_rolesimprovements">
-                                        <title>Allow delete and massive delete categories</title>
+                                        <title>Allow delete categories</title>
                                     </delete>
                                 </children>
                             </categories>
+                            <attributes>
+                                <children>
+                                    <attributes>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow view attributes and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow create and edit attributes</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow delete and massive delete attributes</title>
+                                            </delete>
+                                        </children>
+                                    </attributes>
+                                    <sets>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow view attribute sets and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow create and edit attribute sets</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow delete attribute sets</title>
+                                            </delete>
+                                        </children>
+                                    </sets>
+                                </children>
+                            </attributes>
+                            <urlrewrite>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view url rewrites and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit url rewrites</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete url rewrites</title>
+                                    </delete>
+                                </children>
+                            </urlrewrite>
                         </children>
                     </catalog>
                 </children>
