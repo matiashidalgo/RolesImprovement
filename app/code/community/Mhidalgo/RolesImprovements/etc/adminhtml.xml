@@ -150,6 +150,79 @@
                             </sitemap>
                         </children>
                     </catalog>
+                    <customer>
+                        <children>
+                            <manage>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view customers and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit customers</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete and massive delete customers</title>
+                                    </delete>
+                                </children>
+                            </manage>
+                            <group>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view customer groups and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit customer groups</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete customer groups</title>
+                                    </delete>
+                                </children>
+                            </group>
+                        </children>
+                    </customer>
+                    <newsletter>
+                        <children>
+                            <template>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view templates and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit templates</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete and massive delete templates</title>
+                                    </delete>
+                                </children>
+                            </template>
+                            <subscriber>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view subscribers and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit subscribers</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete and massive delete subscribers</title>
+                                    </delete>
+                                </children>
+                            </subscriber>
+                            <queue>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view subscribers and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit subscribers</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete and massive delete subscribers</title>
+                                    </delete>
+                                </children>
+                            </queue>
+                        </children>
+                    </newsletter>
                 </children>
             </admin>
         </resources>

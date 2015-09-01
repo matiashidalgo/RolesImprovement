@@ -86,6 +86,27 @@ class Mhidalgo_RolesImprovements_Model_Observer
             case 'Mage_Adminhtml_Block_Sitemap_Edit':
                 $validator->validateAdminhtmlSitemapEdit($block);
                 break;
+            case 'Mage_Adminhtml_Block_Customer':
+                $validator->validateAdminhtmlCustomer($block);
+                break;
+            case 'Mage_Adminhtml_Block_Customer_Edit':
+                $validator->validateAdminhtmlCustomerEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Customer_Group':
+                $validator->validateAdminhtmlCustomerGroup($block);
+                break;
+            case 'Mage_Adminhtml_Block_Customer_Group_Edit':
+                $validator->validateAdminhtmlCustomerGroupEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Newsletter_Template':
+                $validator->validateAdminhtmlNewsletterTemplate($block);
+                break;
+            case 'Mage_Adminhtml_Block_Newsletter_Template_Edit':
+                $validator->validateAdminhtmlNewsletterTemplateEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Newsletter_Queue_Edit':
+                $validator->validateAdminhtmlNewsletterQueueEdit($block);
+                break;
         }
     }
 
@@ -105,6 +126,30 @@ class Mhidalgo_RolesImprovements_Model_Observer
                 break;
             case 'Mage_Adminhtml_Block_Sitemap_Grid':
                 $validator->validateAdminhtmlSitemapGrid($block);
+                break;
+            case 'Mage_Adminhtml_Block_Customer_Grid':
+                $validator->validateAdminhtmlCustomerGrid($block);
+                break;
+            case 'Mage_Adminhtml_Block_Customer_Edit_Tab_Orders':
+                $validator->validateAdminhtmlCustomerEditTabOrders($block);
+                break;
+            case 'Mage_Adminhtml_Block_Customer_Edit_Tab_Addresses':
+                $validator->validateAdminhtmlCustomerEditTabAddresses($block);
+                break;
+            case 'Mage_Adminhtml_Block_Customer_Edit_Tab_View_Orders':
+                $validator->validateAdminhtmlCustomerEditTabViewOrders($block);
+                break;
+            case 'Mage_Adminhtml_Block_Customer_Edit_Tab_Cart':
+                $validator->validateAdminhtmlCustomerEditTabCart($block);
+                break;
+            case 'Mage_Adminhtml_Block_Customer_Edit_Tab_Wishlist':
+                $validator->validateAdminhtmlCustomerEditTabWishlist($block);
+                break;
+            case 'Mage_Adminhtml_Block_Newsletter_Template_Grid':
+                $validator->validateAdminhtmlNewsletterTemplateGrid($block);
+                break;
+            case 'Mage_Adminhtml_Block_Newsletter_Subscriber_Grid':
+                $validator->validateAdminhtmlNewsletterSubscriberGrid($block);
                 break;
         }
     }

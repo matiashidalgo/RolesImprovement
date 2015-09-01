@@ -22,11 +22,8 @@ class Mhidalgo_RolesImprovements_Helper_Validator
      * Validate role access
      * @return bool
      */
-    public function can() {
-        return $this->getAdminSession()->isAllowed('');
-    }
-    public function validateAdminhtml() {
-
+    public function can($allow) {
+        return $this->getAdminSession()->isAllowed($allow);
     }
 
     // Catalog Related Validations
@@ -68,6 +65,91 @@ class Mhidalgo_RolesImprovements_Helper_Validator
 
     public function canCatalogSitemap($action) {
         return $this->getAdminSession()->isAllowed('catalog/sitemap/'.$action);
+    }
+
+    public function canCustomerManage($action) {
+        return $this->getAdminSession()->isAllowed('customer/manage/'.$action);
+    }
+
+    public function canCustomerGroup($action) {
+        return $this->getAdminSession()->isAllowed('customer/group/'.$action);
+    }
+
+    public function canNewsletterTemplate($action) {
+        return $this->getAdminSession()->isAllowed('newsletter/template/'.$action);
+    }
+
+    public function canNewsletterSubscriber($action) {
+        return $this->getAdminSession()->isAllowed('newsletter/subscriber/'.$action);
+    }
+
+    public function canNewsletterQueue($action) {
+        return $this->getAdminSession()->isAllowed('newsletter/queue/'.$action);
+    }
+
+    public function canBillingAgreement($action) {
+        switch ($action) {
+            case 'view' :
+                $action = 'view';
+                break;
+            case 'edit' :
+                $action = 'manage';
+                break;
+            case 'delete':
+                $action = 'manage';
+                break;
+        }
+        return $this->getAdminSession()->isAllowed('sales/billing_agreement/actions/'.$action);
+    }
+
+    public function canSalesOrder($action) {
+        $action = strtolower($action);
+        switch ($action) {
+            case 'hold':
+                $aclResource = 'sales/order/actions/hold';
+                break;
+            case 'unhold':
+                $aclResource = 'sales/order/actions/unhold';
+                break;
+            case 'email':
+                $aclResource = 'sales/order/actions/email';
+                break;
+            case 'cancel':
+                $aclResource = 'sales/order/actions/cancel';
+                break;
+            case 'view':
+                $aclResource = 'sales/order/actions/view';
+                break;
+            case 'addcomment':
+                $aclResource = 'sales/order/actions/comment';
+                break;
+            case 'creditmemos':
+                $aclResource = 'sales/order/actions/creditmemo';
+                break;
+            case 'reviewpayment':
+                $aclResource = 'sales/order/actions/review_payment';
+                break;
+            case 'edit':
+                $aclResource = 'sales/order/actions/edit';
+                break;
+            case 'save':
+                $aclResource = 'sales/order/actions/create';
+                break;
+            case 'reorder':
+                $aclResource = 'sales/order/actions/reorder';
+                break;
+            /*case 'creditmemo': //todo this
+                $aclResource = 'sales/creditmemo';
+                break;
+            case 'invoice':
+                $aclResource = 'sales/invoice';
+                break;*/
+            default:
+                $aclResource = 'sales/order/actions';
+                break;
+
+        }
+        return $this->getAdminSession()->isAllowed($aclResource);
     }
 
     /**
@@ -396,7 +478,7 @@ class Mhidalgo_RolesImprovements_Helper_Validator
             $block->removeButton('reset');
         }
 
-        if (!$this->canCatalogRating('delete')) {
+        if (!$this->canCatalogSitemap('delete')) {
             $block->removeButton('delete');
         }
     }
@@ -407,6 +489,181 @@ class Mhidalgo_RolesImprovements_Helper_Validator
     public function validateAdminhtmlSitemapGrid($block) {
         if (!$this->canCatalogSitemap('edit')) {
             $block->removeColumn('action');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer $block
+     */
+    public function validateAdminhtmlCustomer($block) {
+        if (!$this->canCustomerManage('edit')) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer_Edit $block
+     */
+    public function validateAdminhtmlCustomerEdit($block) {
+        if (!$this->canCustomerManage('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('save_and_continue');
+            $block->removeButton('reset');
+        }
+
+        if (!$this->canCustomerManage('delete')) {
+            $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer_Grid $block
+     */
+    public function validateAdminhtmlCustomerGrid($block) {
+        if (!$this->canCustomerManage('edit')) {
+            $block->removeColumn('action');
+        }
+
+        if (!$this->canCustomerManage('delete')) {
+            $block->getMassactionBlock()->removeItem('delete');
+        }
+
+        if (!$this->canCustomerGroup('edit')) {
+            $block->getMassactionBlock()->removeItem('assign_group');
+        }
+
+        if (!$this->canNewsletterSubscriber('edit')) {
+            $block->getMassactionBlock()->removeItem('newsletter_subscribe');
+            $block->getMassactionBlock()->removeItem('newsletter_unsubscribe');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer_Edit_Tab_Orders $block
+     */
+    public function validateAdminhtmlCustomerEditTabOrders($block) {
+        if (!$this->canSalesOrder('reorder')) {
+            $block->removeColumn('action');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer_Edit_Tab_Addresses $block
+     */
+    public function validateAdminhtmlCustomerEditTabAddresses($block) {
+        if (!$this->canCustomerManage('edit')) {
+            $block->unsetChild('add_address_button');
+            $block->unsetChild('cancel_button');
+            Mage::registry('current_customer')->setIsReadonly(true);
+        }
+
+        if (!$this->canCustomerManage('delete')) {
+            $block->unsetChild('delete_button');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer_Edit_Tab_View_Orders $block
+     */
+    public function validateAdminhtmlCustomerEditTabViewOrders($block) {
+        if (!$this->canSalesOrder('reorder')) {
+            $block->removeColumn('action');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer_Edit_Tab_Cart $block
+     */
+    public function validateAdminhtmlCustomerEditTabCart($block) {
+        if (!$this->canCustomerManage('edit')) {
+            $block->removeColumn('action');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer_Edit_Tab_Wishlist $block
+     */
+    public function validateAdminhtmlCustomerEditTabWishlist($block) {
+        if (!$this->canCustomerManage('edit')) {
+            $block->removeColumn('action');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer_Group $block
+     */
+    public function validateAdminhtmlCustomerGroup($block) {
+        if (!$this->canCustomerGroup('edit')) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Customer_Group_Edit $block
+     */
+    public function validateAdminhtmlCustomerGroupEdit($block) {
+        if (!$this->canCustomerGroup('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('reset');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Newsletter_Template $block
+     */
+    public function validateAdminhtmlNewsletterTemplate($block) {
+        if (!$this->canNewsletterTemplate('edit')) {
+            $block->setTemplate('newsletter/template/listWithoutAdd.phtml');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Newsletter_Template_Grid $block
+     */
+    public function validateAdminhtmlNewsletterTemplateGrid($block) {
+        if (!$this->canNewsletterTemplate('edit')) {
+            $block->removeColumn('action');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Newsletter_Template_Edit $block
+     */
+    public function validateAdminhtmlNewsletterTemplateEdit($block) {
+        if (!$this->canNewsletterTemplate('edit')) {
+            $block->unsetChild('reset_button');
+            $block->unsetChild('to_plain_button');
+            $block->unsetChild('to_html_button');
+            $block->unsetChild('save_button');
+            $block->unsetChild('save_as_button');
+        }
+
+        if (!$this->canNewsletterTemplate('delete')) {
+            $block->unsetChild('delete_button');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Newsletter_Subscriber_Grid $block
+     */
+    public function validateAdminhtmlNewsletterSubscriberGrid($block) {
+        if (!$this->canNewsletterSubscriber('edit')) {
+            $block->getMassactionBlock()->removeItem('unsubscribe');
+        }
+
+        if (!$this->canNewsletterSubscriber('delete')) {
+            $block->getMassactionBlock()->removeItem('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Newsletter_Queue_Edit $block
+     */
+    public function validateAdminhtmlNewsletterQueueEdit($block) {
+        if (!$this->canNewsletterQueue('edit')) {
+            $block->unsetChild('reset_button');
+            $block->unsetChild('save_button');
+            $block->unsetChild('save_and_resume');
         }
     }
 }
