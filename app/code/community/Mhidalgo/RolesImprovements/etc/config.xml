@@ -10,6 +10,11 @@
             <mhidalgo_rolesimprovements>
                 <class>Mhidalgo_RolesImprovements_Block</class>
             </mhidalgo_rolesimprovements>
+            <widget>
+                <rewrite>
+                    <adminhtml_widget_instance_edit_tab_main_layout>Mhidalgo_RolesImprovements_Block_Widget_Adminhtml_Instance_Edit_Tab_Main_Layout</adminhtml_widget_instance_edit_tab_main_layout>
+                </rewrite>
+            </widget>
         </blocks>
         <helpers>
             <mhidalgo_rolesimprovements>

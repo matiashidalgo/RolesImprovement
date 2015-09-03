@@ -119,6 +119,18 @@ class Mhidalgo_RolesImprovements_Model_Observer
             case 'Mage_Adminhtml_Block_Promo_Quote_Edit':
                 $validator->validateAdminhtmlPromoQuoteEdit($block);
                 break;
+            case 'Mage_Adminhtml_Block_Cms_Block':
+                $validator->validateAdminhtmlCmsBlock($block);
+                break;
+            case 'Mage_Adminhtml_Block_Cms_Block_Edit':
+                $validator->validateAdminhtmlCmsBlockEdit($block);
+                break;
+            case 'Mage_Widget_Block_Adminhtml_Widget_Instance':
+                $validator->validateAdminhtmlWidgetInstance($block);
+                break;
+            case 'Mage_Widget_Block_Adminhtml_Widget_Instance_Edit':
+                $validator->validateAdminhtmlWidgetInstanceEdit($block);
+                break;
         }
     }
 
@@ -165,6 +177,18 @@ class Mhidalgo_RolesImprovements_Model_Observer
                 break;
             case 'Mage_Adminhtml_Block_Promo_Catalog_Edit_Tab_Conditions':
                 $validator->validateAdminhtmlPromoCatalogEditTabConditions($block);
+                break;
+            case 'Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Actions':
+                $validator->validateAdminhtmlPromoQuoteEditTabActions($block);
+                break;
+            case 'Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Conditions':
+                $validator->validateAdminhtmlPromoQuoteEditTabConditions($block);
+                break;
+            case 'Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Coupons_Grid':
+                $validator->validateAdminhtmlPromoQuoteEditTabCouponsGrid($block);
+                break;
+            case 'Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Coupons_Form':
+                $validator->validateAdminhtmlPromoQuoteEditTabCouponsForm($block);
                 break;
         }
     }

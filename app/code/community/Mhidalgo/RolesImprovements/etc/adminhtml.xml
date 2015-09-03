@@ -211,10 +211,10 @@
                             <queue>
                                 <children>
                                     <view translate="title" module="mhidalgo_rolesimprovements">
-                                        <title>Allow view subscribers and grid</title>
+                                        <title>Allow view queues and grid</title>
                                     </view>
                                     <edit translate="title" module="mhidalgo_rolesimprovements">
-                                        <title>Allow create and edit subscribers</title>
+                                        <title>Allow create and edit queues</title>
                                     </edit>
                                 </children>
                             </queue>
@@ -250,6 +250,66 @@
                             </quote>
                         </children>
                     </promo>
+                    <cms>
+                        <children>
+                            <page>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view cms pages and grid</title>
+                                    </view>
+                                    <save translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit cms pages</title>
+                                    </save>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete cms pages</title>
+                                    </delete>
+                                </children>
+                            </page>
+                            <block>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view cms blocks and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit cms blocks</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete cms blocks</title>
+                                    </delete>
+                                </children>
+                            </block>
+                            <widget_instance>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view widgets and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit widgets</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete widgets</title>
+                                    </delete>
+                                </children>
+                            </widget_instance>
+                        </children>
+                    </cms>
+                    <sales>
+                        <children>
+                            <checkoutagreement>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view terms and conditions and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit terms and conditions</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete and massive delete terms and conditions</title>
+                                    </delete>
+                                </children>
+                            </checkoutagreement>
+                        </children>
+                    </sales>
                 </children>
             </admin>
         </resources>

@@ -95,6 +95,14 @@ class Mhidalgo_RolesImprovements_Helper_Validator
         return $this->getAdminSession()->isAllowed('promo/quote/'.$action);
     }
 
+    public function canCmsBlock($action) {
+        return $this->getAdminSession()->isAllowed('cms/block/'.$action);
+    }
+
+    public function canCmsWidgetInstance($action) {
+        return $this->getAdminSession()->isAllowed('cms/widget_instance/'.$action);
+    }
+
     public function canBillingAgreement($action) {
         switch ($action) {
             case 'view' :
@@ -702,29 +710,14 @@ class Mhidalgo_RolesImprovements_Helper_Validator
     }
 
     /**
-     * @param Mage_Adminhtml_Block_Promo_Catalog_Edit_Tab_Actions $block
-     */
-    public function validateAdminhtmlPromoCatalogEditTabActions($block) {
-        /*if (!$this->canPromoCatalog('edit')) {
-            Mage::registry('current_promo_catalog_rule')->setReadonly();
-        }
-
-        if (!$this->canPromoCatalog('delete')) {
-            Mage::registry('current_promo_catalog_rule')->setReadonly();
-        }*/
-    }
-
-    /**
      * @param Mage_Adminhtml_Block_Promo_Catalog_Edit_Tab_Conditions $block
      */
     public function validateAdminhtmlPromoCatalogEditTabConditions($block) {
-        /*if (!$this->canPromoCatalog('edit')) {
-            $block->getElement()->setReadonly();
+        if (!$this->canPromoCatalog('edit') || !$this->canPromoCatalog('delete')) {
+            foreach ($block->getForm()->getElements() as $element) {
+                $element->setReadonly(true);
+            }
         }
-
-        if (!$this->canPromoCatalog('delete')) {
-            $block->getElement()->setReadonly();
-        }*/
     }
 
     /**
@@ -754,25 +747,87 @@ class Mhidalgo_RolesImprovements_Helper_Validator
      * @param Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Actions $block
      */
     public function validateAdminhtmlPromoQuoteEditTabActions($block) {
-        /*if (!$this->canPromoCatalog('edit')) {
-            Mage::registry('current_promo_catalog_rule')->setReadonly();
+        if (!$this->canPromoQuote('edit') || !$this->canPromoQuote('delete')) {
+            foreach ($block->getForm()->getElements() as $element) {
+                $element->setReadonly(true);
+            }
         }
-
-        if (!$this->canPromoCatalog('delete')) {
-            Mage::registry('current_promo_catalog_rule')->setReadonly();
-        }*/
     }
 
     /**
      * @param Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Conditions $block
      */
     public function validateAdminhtmlPromoQuoteEditTabConditions($block) {
-        /*if (!$this->canPromoCatalog('edit')) {
-            $block->getElement()->setReadonly();
+        if (!$this->canPromoQuote('edit') || !$this->canPromoQuote('delete')) {
+            foreach ($block->getForm()->getElements() as $element) {
+                $element->setReadonly(true);
+            }
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Coupons_Grid $block
+     */
+    public function validateAdminhtmlPromoQuoteEditTabCouponsGrid($block) {
+        if (!$this->canPromoQuote('delete')) {
+            $block->getMassactionBlock()->removeItem('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Coupons_Form $block
+     */
+    public function validateAdminhtmlPromoQuoteEditTabCouponsForm($block) {
+        if (!$this->canPromoQuote('edit')) {
+            $block->setForm(new Varien_Data_Form());
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Cms_Block $block
+     */
+    public function validateAdminhtmlCmsBlock($block) {
+        if (!$this->canCmsBlock('edit')) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Cms_Block_Edit $block
+     */
+    public function validateAdminhtmlCmsBlockEdit($block) {
+        if (!$this->canCmsBlock('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('saveandcontinue');
+            $block->removeButton('reset');
         }
 
-        if (!$this->canPromoCatalog('delete')) {
-            $block->getElement()->setReadonly();
-        }*/
+        if (!$this->canCmsBlock('delete')) {
+            $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Widget_Block_Adminhtml_Widget_Instance $block
+     */
+    public function validateAdminhtmlWidgetInstance($block) {
+        if (!$this->canCmsWidgetInstance('edit')) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Widget_Block_Adminhtml_Widget_Instance_Edit $block
+     */
+    public function validateAdminhtmlWidgetInstanceEdit($block) {
+        if (!$this->canCmsWidgetInstance('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('save_and_edit_button');
+            $block->removeButton('reset');
+        }
+
+        if (!$this->canCmsWidgetInstance('delete')) {
+            $block->removeButton('delete');
+        }
     }
 }
