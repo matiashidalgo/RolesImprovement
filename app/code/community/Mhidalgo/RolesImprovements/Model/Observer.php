@@ -107,6 +107,18 @@ class Mhidalgo_RolesImprovements_Model_Observer
             case 'Mage_Adminhtml_Block_Newsletter_Queue_Edit':
                 $validator->validateAdminhtmlNewsletterQueueEdit($block);
                 break;
+            case 'Mage_Adminhtml_Block_Promo_Catalog':
+                $validator->validateAdminhtmlPromoCatalog($block);
+                break;
+            case 'Mage_Adminhtml_Block_Promo_Catalog_Edit':
+                $validator->validateAdminhtmlPromoCatalogEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Promo_Quote':
+                $validator->validateAdminhtmlPromoQuote($block);
+                break;
+            case 'Mage_Adminhtml_Block_Promo_Quote_Edit':
+                $validator->validateAdminhtmlPromoQuoteEdit($block);
+                break;
         }
     }
 
@@ -150,6 +162,9 @@ class Mhidalgo_RolesImprovements_Model_Observer
                 break;
             case 'Mage_Adminhtml_Block_Newsletter_Subscriber_Grid':
                 $validator->validateAdminhtmlNewsletterSubscriberGrid($block);
+                break;
+            case 'Mage_Adminhtml_Block_Promo_Catalog_Edit_Tab_Conditions':
+                $validator->validateAdminhtmlPromoCatalogEditTabConditions($block);
                 break;
         }
     }

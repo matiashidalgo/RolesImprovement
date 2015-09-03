@@ -87,6 +87,14 @@ class Mhidalgo_RolesImprovements_Helper_Validator
         return $this->getAdminSession()->isAllowed('newsletter/queue/'.$action);
     }
 
+    public function canPromoCatalog($action) {
+        return $this->getAdminSession()->isAllowed('promo/catalog/'.$action);
+    }
+
+    public function canPromoQuote($action) {
+        return $this->getAdminSession()->isAllowed('promo/quote/'.$action);
+    }
+
     public function canBillingAgreement($action) {
         switch ($action) {
             case 'view' :
@@ -665,5 +673,106 @@ class Mhidalgo_RolesImprovements_Helper_Validator
             $block->unsetChild('save_button');
             $block->unsetChild('save_and_resume');
         }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Catalog $block
+     */
+    public function validateAdminhtmlPromoCatalog($block) {
+        if (!$this->canPromoCatalog('edit')) {
+            $block->removeButton('apply_rules');
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Catalog_Edit $block
+     */
+    public function validateAdminhtmlPromoCatalogEdit($block) {
+        if (!$this->canPromoCatalog('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('save_apply');
+            $block->removeButton('save_and_continue_edit');
+            $block->removeButton('reset');
+        }
+
+        if (!$this->canPromoCatalog('delete')) {
+            $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Catalog_Edit_Tab_Actions $block
+     */
+    public function validateAdminhtmlPromoCatalogEditTabActions($block) {
+        /*if (!$this->canPromoCatalog('edit')) {
+            Mage::registry('current_promo_catalog_rule')->setReadonly();
+        }
+
+        if (!$this->canPromoCatalog('delete')) {
+            Mage::registry('current_promo_catalog_rule')->setReadonly();
+        }*/
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Catalog_Edit_Tab_Conditions $block
+     */
+    public function validateAdminhtmlPromoCatalogEditTabConditions($block) {
+        /*if (!$this->canPromoCatalog('edit')) {
+            $block->getElement()->setReadonly();
+        }
+
+        if (!$this->canPromoCatalog('delete')) {
+            $block->getElement()->setReadonly();
+        }*/
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Quote $block
+     */
+    public function validateAdminhtmlPromoQuote($block) {
+        if (!$this->canPromoQuote('edit')) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Quote_Edit $block
+     */
+    public function validateAdminhtmlPromoQuoteEdit($block) {
+        if (!$this->canPromoQuote('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('save_and_continue_edit');
+        }
+
+        if (!$this->canPromoQuote('delete')) {
+            $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Actions $block
+     */
+    public function validateAdminhtmlPromoQuoteEditTabActions($block) {
+        /*if (!$this->canPromoCatalog('edit')) {
+            Mage::registry('current_promo_catalog_rule')->setReadonly();
+        }
+
+        if (!$this->canPromoCatalog('delete')) {
+            Mage::registry('current_promo_catalog_rule')->setReadonly();
+        }*/
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Conditions $block
+     */
+    public function validateAdminhtmlPromoQuoteEditTabConditions($block) {
+        /*if (!$this->canPromoCatalog('edit')) {
+            $block->getElement()->setReadonly();
+        }
+
+        if (!$this->canPromoCatalog('delete')) {
+            $block->getElement()->setReadonly();
+        }*/
     }
 }

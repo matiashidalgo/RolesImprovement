@@ -216,13 +216,40 @@
                                     <edit translate="title" module="mhidalgo_rolesimprovements">
                                         <title>Allow create and edit subscribers</title>
                                     </edit>
-                                    <delete translate="title" module="mhidalgo_rolesimprovements">
-                                        <title>Allow delete and massive delete subscribers</title>
-                                    </delete>
                                 </children>
                             </queue>
                         </children>
                     </newsletter>
+                    <promo>
+                        <children>
+                            <catalog>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view catalog promotions and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit catalog promotions</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete catalog promotions</title>
+                                    </delete>
+                                </children>
+                            </catalog>
+                            <quote>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow view cart promotions and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow create and edit cart promotions</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovements">
+                                        <title>Allow delete cart promotions</title>
+                                    </delete>
+                                </children>
+                            </quote>
+                        </children>
+                    </promo>
                 </children>
             </admin>
         </resources>
