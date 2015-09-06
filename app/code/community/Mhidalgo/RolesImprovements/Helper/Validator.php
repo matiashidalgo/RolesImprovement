@@ -103,6 +103,18 @@ class Mhidalgo_RolesImprovements_Helper_Validator
         return $this->getAdminSession()->isAllowed('cms/widget_instance/'.$action);
     }
 
+    public function canSalesCheckoutagreement($action) {
+        return $this->getAdminSession()->isAllowed('sales/checkoutagreement/'.$action);
+    }
+
+    public function canSystemToolsBackup($action) {
+        return $this->getAdminSession()->isAllowed('system/tools/backup/'.$action);
+    }
+
+    public function canSystemToolsCompiler($action) {
+        return $this->getAdminSession()->isAllowed('system/tools/compiler/'.$action);
+    }
+
     public function canBillingAgreement($action) {
         switch ($action) {
             case 'view' :
@@ -810,7 +822,7 @@ class Mhidalgo_RolesImprovements_Helper_Validator
     /**
      * @param Mage_Widget_Block_Adminhtml_Widget_Instance $block
      */
-    public function validateAdminhtmlWidgetInstance($block) {
+    public function validateWidgetAdminhtmlWidgetInstance($block) {
         if (!$this->canCmsWidgetInstance('edit')) {
             $block->removeButton('add');
         }
@@ -819,7 +831,7 @@ class Mhidalgo_RolesImprovements_Helper_Validator
     /**
      * @param Mage_Widget_Block_Adminhtml_Widget_Instance_Edit $block
      */
-    public function validateAdminhtmlWidgetInstanceEdit($block) {
+    public function validateWidgetAdminhtmlWidgetInstanceEdit($block) {
         if (!$this->canCmsWidgetInstance('edit')) {
             $block->removeButton('save');
             $block->removeButton('save_and_edit_button');
@@ -828,6 +840,62 @@ class Mhidalgo_RolesImprovements_Helper_Validator
 
         if (!$this->canCmsWidgetInstance('delete')) {
             $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Checkout_Agreement $block
+     */
+    public function validateAdminhtmlCheckoutAgreement($block) {
+        if (!$this->canSalesCheckoutagreement('edit')) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Checkout_Agreement_Edit $block
+     */
+    public function validateAdminhtmlCheckoutAgreementEdit($block) {
+        if (!$this->canSalesCheckoutagreement('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('reset');
+        }
+
+        if (!$this->canSalesCheckoutagreement('delete')) {
+            $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Backup $block
+     */
+    public function validateAdminhtmlBackup($block) {
+        if (!$this->canSystemToolsBackup('edit')) {
+            $block->unsetChild('createButton');
+            $block->unsetChild('createSnapshotButton');
+            $block->unsetChild('createMediaBackupButton');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Backup_Grid $block
+     */
+    public function validateAdminhtmlBackupGrid($block) {
+        if(!$this->canSystemToolsBackup('delete')) {
+            $block->getMassactionBlock()->removeItem('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Compiler_Block_Process $block
+     */
+    public function validateCompilerProcess($block) {
+        if (!$this->canSystemToolsCompiler('run')) {
+            $block->unsetChild('run_button');
+        }
+
+        if (!$this->canSystemToolsCompiler('change_status')) {
+            $block->unsetChild('change_status_button');
         }
     }
 }

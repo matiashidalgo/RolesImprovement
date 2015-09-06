@@ -126,10 +126,22 @@ class Mhidalgo_RolesImprovements_Model_Observer
                 $validator->validateAdminhtmlCmsBlockEdit($block);
                 break;
             case 'Mage_Widget_Block_Adminhtml_Widget_Instance':
-                $validator->validateAdminhtmlWidgetInstance($block);
+                $validator->validateWidgetAdminhtmlWidgetInstance($block);
                 break;
             case 'Mage_Widget_Block_Adminhtml_Widget_Instance_Edit':
-                $validator->validateAdminhtmlWidgetInstanceEdit($block);
+                $validator->validateWidgetAdminhtmlWidgetInstanceEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Checkout_Agreement':
+                $validator->validateAdminhtmlCheckoutAgreement($block);
+                break;
+            case 'Mage_Adminhtml_Block_Checkout_Agreement_Edit':
+                $validator->validateAdminhtmlCheckoutAgreementEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Backup':
+                $validator->validateAdminhtmlBackup($block);
+                break;
+            case 'Mage_Compiler_Block_Process':
+                $validator->validateCompilerProcess($block);
                 break;
         }
     }
@@ -189,6 +201,9 @@ class Mhidalgo_RolesImprovements_Model_Observer
                 break;
             case 'Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Coupons_Form':
                 $validator->validateAdminhtmlPromoQuoteEditTabCouponsForm($block);
+                break;
+            case 'Mage_Adminhtml_Block_Backup_Grid':
+                $validator->validateAdminhtmlBackupGrid($block);
                 break;
         }
     }

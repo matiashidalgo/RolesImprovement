@@ -304,12 +304,73 @@
                                         <title>Allow create and edit terms and conditions</title>
                                     </edit>
                                     <delete translate="title" module="mhidalgo_rolesimprovements">
-                                        <title>Allow delete and massive delete terms and conditions</title>
+                                        <title>Allow delete terms and conditions</title>
                                     </delete>
                                 </children>
                             </checkoutagreement>
+                            <tax>
+                                <children>
+                                    <rules>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow view tax rules and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow create and edit tax rules</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow delete and massive delete tax rules</title>
+                                            </delete>
+                                        </children>
+                                    </rules>
+                                    <rates>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow view tax rates and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow create and edit tax rates</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow delete and massive delete tax rates</title>
+                                            </delete>
+                                        </children>
+                                    </rates>
+                                </children>
+                            </tax>
                         </children>
                     </sales>
+                    <system>
+                        <children>
+                            <tools>
+                                <children>
+                                    <backup>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow view backups and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow create backups</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow delete and massive delete backups</title>
+                                            </delete>
+                                        </children>
+                                    </backup>
+                                    <compiler>
+                                        <children>
+                                            <run translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow run compiler</title>
+                                            </run>
+                                            <change_status translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow enable/disable</title>
+                                            </change_status>
+                                        </children>
+                                    </compiler>
+                                </children>
+                            </tools>
+                        </children>
+                    </system>
                 </children>
             </admin>
         </resources>
