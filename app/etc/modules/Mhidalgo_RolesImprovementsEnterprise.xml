@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mhidalgo_RolesImprovementsEnterprise>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Adminhtml />
+            </depends>
+        </Mhidalgo_RolesImprovementsEnterprise>
+    </modules>
+</config>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <enterprise_giftwrapping>
+                                <children>
+                                    <view translate="title" module="mhidalgo_rolesimprovementsenterprise">
+                                        <title>Allow view gift wrappings and grid</title>
+                                    </view>
+                                    <edit translate="title" module="mhidalgo_rolesimprovementsenterprise">
+                                        <title>Allow create and edit gift wrappings</title>
+                                    </edit>
+                                    <delete translate="title" module="mhidalgo_rolesimprovementsenterprise">
+                                        <title>Allow delete and massive delete gift wrappings</title>
+                                    </delete>
+                                </children>
+                            </enterprise_giftwrapping>
+                            <enterprise_rma>
+                                <children>
+                                    <rma>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovementsenterprise">
+                                                <title>Allow view RMA and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovementsenterprise">
+                                                <title>Allow create and edit RMA</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovementsenterprise">
+                                                <title>Allow delete and massive delete RMA</title>
+                                            </delete>
+                                        </children>
+                                    </rma>
+                                    <rma_item_attribute>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovementsenterprise">
+                                                <title>Allow view RMA item and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovementsenterprise">
+                                                <title>Allow create and edit RMA item</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovementsenterprise">
+                                                <title>Allow delete and massive delete RMA item</title>
+                                            </delete>
+                                        </children>
+                                    </rma_item_attribute>
+                                </children>
+                            </enterprise_rma>
+                        </children>
+                    </sales>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
