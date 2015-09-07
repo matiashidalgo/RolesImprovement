@@ -182,12 +182,6 @@ class Mhidalgo_RolesImprovements_Helper_Validator
             case 'reorder':
                 $aclResource = 'sales/order/actions/reorder';
                 break;
-            /*case 'creditmemo': //todo this
-                $aclResource = 'sales/creditmemo';
-                break;
-            case 'invoice':
-                $aclResource = 'sales/invoice';
-                break;*/
             default:
                 $aclResource = 'sales/order/actions';
                 break;
