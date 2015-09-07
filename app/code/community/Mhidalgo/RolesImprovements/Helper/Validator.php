@@ -115,6 +115,22 @@ class Mhidalgo_RolesImprovements_Helper_Validator
         return $this->getAdminSession()->isAllowed('system/tools/compiler/'.$action);
     }
 
+    public function canSalesTaxRules($action) {
+        return $this->getAdminSession()->isAllowed('sales/tax/rules/'.$action);
+    }
+
+    public function canSalesTaxRates($action) {
+        return $this->getAdminSession()->isAllowed('sales/tax/rates/'.$action);
+    }
+
+    public function canSalesTaxCustomerClasses($action) {
+        return $this->getAdminSession()->isAllowed('sales/tax/classes_customer/'.$action);
+    }
+
+    public function canSalesTaxProductClasses($action) {
+        return $this->getAdminSession()->isAllowed('sales/tax/classes_product/'.$action);
+    }
+
     public function canBillingAgreement($action) {
         switch ($action) {
             case 'view' :
@@ -896,6 +912,79 @@ class Mhidalgo_RolesImprovements_Helper_Validator
 
         if (!$this->canSystemToolsCompiler('change_status')) {
             $block->unsetChild('change_status_button');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Tax_Rule $block
+     */
+    public function validateAdminhtmlTaxRule($block) {
+        if (!$this->canSalesTaxRules('edit')) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Tax_Rule_Edit $block
+     */
+    public function validateAdminhtmlTaxRuleEdit($block) {
+        if (!$this->canSalesTaxRules('edit')) {
+            $block->removeButton('save');
+            $block->removeButton('save_and_continue');
+            $block->removeButton('reset');
+        }
+
+        if (!$this->canSalesTaxRules('delete')) {
+            $block->removeButton('delete');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Tax_Rate_Toolbar_Add $block
+     */
+    public function validateAdminhtmlTaxRateToolbarAdd($block) {
+        if (!$this->canSalesTaxRates('edit')) {
+            $block->unsetChild('addButton');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Tax_Rate_Toolbar_Save $block
+     */
+    public function validateAdminhtmlTaxRateToolbarSave($block) {
+        if (!$this->canSalesTaxRates('edit')) {
+            $block->unsetChild('resetButton');
+            $block->unsetChild('saveButton');
+        }
+
+        if (!$this->canSalesTaxRates('delete')) {
+            $block->unsetChild('deleteButton');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Tax_Class $block
+     */
+    public function validateAdminhtmlTaxClass($block) {
+        if ((!$this->canSalesTaxCustomerClasses('edit') && $block->getClassType() == Mage_Tax_Model_Class::TAX_CLASS_TYPE_CUSTOMER) ||
+            (!$this->canSalesTaxProductClasses('edit') && $block->getClassType() == Mage_Tax_Model_Class::TAX_CLASS_TYPE_PRODUCT)) {
+            $block->removeButton('add');
+        }
+    }
+
+    /**
+     * @param Mage_Adminhtml_Block_Tax_Class_Edit $block
+     */
+    public function validateAdminhtmlTaxClassEdit($block) {
+        if ((!$this->canSalesTaxCustomerClasses('edit') && $block->getChild('form')->getClassType() == Mage_Tax_Model_Class::TAX_CLASS_TYPE_CUSTOMER) ||
+            (!$this->canSalesTaxProductClasses('edit') && $block->getChild('form')->getClassType() == Mage_Tax_Model_Class::TAX_CLASS_TYPE_PRODUCT)) {
+            $block->removeButton('save');
+            $block->removeButton('reset');
+        }
+
+        if ((!$this->canSalesTaxCustomerClasses('delete') && $block->getChild('form')->getClassType() == Mage_Tax_Model_Class::TAX_CLASS_TYPE_CUSTOMER) ||
+            (!$this->canSalesTaxProductClasses('delete') && $block->getChild('form')->getClassType() == Mage_Tax_Model_Class::TAX_CLASS_TYPE_PRODUCT)) {
+            $block->removeButton('delete');
         }
     }
 }

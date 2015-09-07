@@ -319,7 +319,7 @@
                                                 <title>Allow create and edit tax rules</title>
                                             </edit>
                                             <delete translate="title" module="mhidalgo_rolesimprovements">
-                                                <title>Allow delete and massive delete tax rules</title>
+                                                <title>Allow delete tax rules</title>
                                             </delete>
                                         </children>
                                     </rules>
@@ -332,10 +332,36 @@
                                                 <title>Allow create and edit tax rates</title>
                                             </edit>
                                             <delete translate="title" module="mhidalgo_rolesimprovements">
-                                                <title>Allow delete and massive delete tax rates</title>
+                                                <title>Allow delete tax rates</title>
                                             </delete>
                                         </children>
                                     </rates>
+                                    <classes_customer>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow view customer classes and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow create and edit customer classes</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow delete customer classes</title>
+                                            </delete>
+                                        </children>
+                                    </classes_customer>
+                                    <classes_product>
+                                        <children>
+                                            <view translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow view product classes and grid</title>
+                                            </view>
+                                            <edit translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow create and edit product classes</title>
+                                            </edit>
+                                            <delete translate="title" module="mhidalgo_rolesimprovements">
+                                                <title>Allow delete product classes</title>
+                                            </delete>
+                                        </children>
+                                    </classes_product>
                                 </children>
                             </tax>
                         </children>

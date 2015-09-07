@@ -143,6 +143,18 @@ class Mhidalgo_RolesImprovements_Model_Observer
             case 'Mage_Compiler_Block_Process':
                 $validator->validateCompilerProcess($block);
                 break;
+            case 'Mage_Adminhtml_Block_Tax_Rule':
+                $validator->validateAdminhtmlTaxRule($block);
+                break;
+            case 'Mage_Adminhtml_Block_Tax_Rule_Edit':
+                $validator->validateAdminhtmlTaxRuleEdit($block);
+                break;
+            case 'Mage_Adminhtml_Block_Tax_Rate_Toolbar_Add':
+                $validator->validateAdminhtmlTaxRateToolbarAdd($block);
+                break;
+            case 'Mage_Adminhtml_Block_Tax_Rate_Toolbar_Save':
+                $validator->validateAdminhtmlTaxRateToolbarSave($block);
+                break;
         }
     }
 
@@ -204,6 +216,12 @@ class Mhidalgo_RolesImprovements_Model_Observer
                 break;
             case 'Mage_Adminhtml_Block_Backup_Grid':
                 $validator->validateAdminhtmlBackupGrid($block);
+                break;
+            case 'Mage_Adminhtml_Block_Tax_Class':
+                $validator->validateAdminhtmlTaxClass($block);
+                break;
+            case 'Mage_Adminhtml_Block_Tax_Class_Edit':
+                $validator->validateAdminhtmlTaxClassEdit($block);
                 break;
         }
     }
