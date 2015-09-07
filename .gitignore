@@ -10,6 +10,7 @@ gen
 .modman/
 app/code/community/Phoenix/
 app/code/community/Cm/
+app/code/community/OnTap/
 app/code/core/
 app/design/adminhtml/default/default/etc/
 app/design/adminhtml/default/default/layout/
@@ -32,11 +33,14 @@ app/design/adminhtml/default/default/template/directory/
 app/design/adminhtml/default/default/template/downloadable/
 app/design/adminhtml/default/default/template/eav/
 app/design/adminhtml/default/default/template/email/
+app/design/adminhtml/default/default/template/enterprise/
 app/design/adminhtml/default/default/template/giftmessage/
 app/design/adminhtml/default/default/template/googlebase/
+app/design/adminhtml/default/default/template/googleanalyticsuniversal/
 app/design/adminhtml/default/default/template/importexport/
 app/design/adminhtml/default/default/template/index/
 app/design/adminhtml/default/default/template/media/
+app/design/adminhtml/default/default/template/merchandiser/
 app/design/adminhtml/default/default/template/moneybookers/
 app/design/adminhtml/default/default/template/newsletter/preview/
 app/design/adminhtml/default/default/template/newsletter/problem/
@@ -47,6 +51,7 @@ app/design/adminhtml/default/default/template/newsletter/template/list.phtml
 app/design/adminhtml/default/default/template/newsletter/template/preview.phtml
 app/design/adminhtml/default/default/template/notification/
 app/design/adminhtml/default/default/template/oauth/
+app/design/adminhtml/default/default/template/ogone/
 app/design/adminhtml/default/default/template/page/
 app/design/adminhtml/default/default/template/pagecache/
 app/design/adminhtml/default/default/template/paygate/
@@ -77,6 +82,7 @@ app/design/frontend/default/default/
 app/design/frontend/default/iphone/
 app/design/frontend/default/modern/
 app/design/frontend/enterprise/default
+app/design/frontend/enterprise/iphone
 app/design/install/
 app/etc/modules/Enterprise_*
 app/etc/modules/Mage_All.xml
@@ -94,6 +100,8 @@ app/etc/modules/Mage_Downloadable.xml
 app/etc/modules/Mage_ImportExport.xml
 app/etc/modules/Mage_LoadTest.xml
 app/etc/modules/Mage_Oauth.xml
+app/etc/modules/Mage_Ogone.xml
+app/etc/modules/OnTap_Merchandiser.xml
 app/etc/modules/Mage_PageCache.xml
 app/etc/modules/Mage_Persistent.xml
 app/etc/modules/Mage_Weee.xml
@@ -128,10 +136,12 @@ js/enterprise/
 js/extjs/
 js/firebug/
 js/flash/
+js/google/
 js/index.php
 js/jscolor/
 js/lib/
 js/mage/
+js/merchandiser/
 js/prototype/
 js/scriptaculous/
 js/spacer.gif
@@ -153,6 +163,7 @@ lib/Cm/
 lib/Credis/
 lib/Magento/
 lib/Net/
+lib/Support/
 LICENSE_AFL.txt
 LICENSE.html
 LICENSE.txt
@@ -170,6 +181,12 @@ shell/abstract.php
 shell/compiler.php
 shell/indexer.php
 shell/log.php
+shell/umt113_conflict.php
+shell/umt113_redirect.php
+shell/url_migration_from_1_13_0_0_to_1_13_0_2.php
+shell/url_migration_to_1_13.php
+shell/lib/
+shell/support/
 sitemap.xml
 skin/adminhtml/default/default/
 skin/adminhtml/default/enterprise
